@@ -126,7 +126,7 @@ U0 DumpMap()
     }
     "\n";
   }
-}
+}
 
 U0 Part1()
 {
@@ -191,6 +191,7 @@ Bool Simulate2(I64 x,I64 y)
 
   while (InsideMap(&pos)) {
     Vec2Add(&pos, &dir, &new_pos);
+    if (!InsideMap(&new_pos)) break;
     if (map2[new_pos.x][new_pos.y]=='#') {
       if (map2[pos.x][pos.y]=='+')
         return TRUE;
@@ -270,7 +271,7 @@ U0 Part2()
       "%d.%d\n",obs_pos.y,obs_pos.x;
       if (map[obs_pos.x][obs_pos.y]=='.') {
         map[obs_pos.x][obs_pos.y]='#';
-        res+=Simulate3(guard_pos.x,guard_pos.y);
+        res+=Simulate2(guard_pos.x,guard_pos.y);
         map[obs_pos.x][obs_pos.y]='.';
       }
     }
